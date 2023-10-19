@@ -1,0 +1,58 @@
+<html>
+    <head>
+    </head>
+    <body>
+
+        <div>
+            <input type="text" placeholder="name" name="name_" id="nam"><br><br>
+            <input type="number" placeholder="number" name="number_" id="num"><br><br>
+            <input type="place" placeholder="place" name="place_" id="pla"><br><br>
+            <input type="mail" placeholder="mail" name="mail_" id="mai"><br><br>
+        </div>
+
+<div id="info"></div>
+
+<div>
+        <button onclick="add()">add</button>
+        <button onclick="show()">show</button>
+        <button onclick="remove()">remove</button>
+
+</div>
+<script>
+    var employ=[]
+    function add(){
+        var na=document.getElementById("nam").value
+        var nu=document.getElementById("num").value
+        var pl=document.getElementById("pla").value
+        var ma=document.getElementById("mai").value
+        
+        var data={name:na,number:nu,place:pl,mail:ma}
+        employ.push(data);
+    localStorage.setItem("abdul",JSON.stringify(employ))
+    }
+    console.log(employ);
+
+  function show(){
+   var abc=JSON.parse(localStorage.getItem("abdul"))
+   
+    var display=document.getElementById("info")
+    var tab= "<table border='3px'>"+"<tr>"+"<th>"+"name"+"</th>"+"<th>"+"number"+"</th>"+"<th>"+"place"+"</th>"+"<th>"+"mail"+"</th>"
+        +"</tr>"
+ 
+       for (var u=0;u<abc.length;u++){
+       var tab =tab+"<tr>"+"<td>"+abc[u].name+"</td>"+"<td>"+abc[u].number+"</td>"
+       +"<td>"+abc[u].place+"</td>"+"<td>"+abc[u].mail+"</td>"+"</tr>"
+       display.innerHTML=tab
+       +"</table>"
+
+    }
+    console.log(abc);
+    }
+    function remove(){
+        localStorage.removeItem("abdul");
+    }
+    
+
+    </script>
+    </body>
+</html>
